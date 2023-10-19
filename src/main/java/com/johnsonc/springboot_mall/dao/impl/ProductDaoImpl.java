@@ -76,7 +76,7 @@ public class ProductDaoImpl implements ProductDao {
                 "stock = :stock, " +
                 "description = :description, " +
                 "last_modified_date = :last_modified_date " +
-                "WHERE product_id = :product_id"; // 假設product_id是更新的條件，請根據你的需求調整
+                "WHERE product_id = :product_id";
 
         Map<String, Object> paramMap = new HashMap<>();
         paramMap.put("product_id",productId);
@@ -90,6 +90,16 @@ public class ProductDaoImpl implements ProductDao {
         paramMap.put("last_modified_date", new Date());
         log.info(paramMap.toString());
         namedParameterJdbcTemplate.update(sql,paramMap);
+    }
 
+
+    @Override
+    public void deleteProductById(Integer productId) {
+        System.out.println("starting deleteProductById DAO");
+        String sql = "DELETE FROM product WHERE product_id = :product_id";
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("product_id", productId);
+
+        namedParameterJdbcTemplate.update(sql,paramMap);
     }
 }

@@ -24,31 +24,31 @@ public class ProductController {
 
     //http://localhost:8080/products/search/3
     @GetMapping("/search/{productId}")
-    public ResponseEntity<Product> getProduct(@PathVariable Integer productId){
+    public ResponseEntity<Product> getProduct(@PathVariable Integer productId) {
 
-       Product product = productService.getProductById(productId);
+        Product product = productService.getProductById(productId);
 
-       if(product != null){
-           return ResponseEntity.status(HttpStatus.OK).body(product);
-       }else{
-           log.info("is null");
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-       }
+        if (product != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(product);
+        } else {
+            log.info("is null");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        }
     }
 
-/*
-    {
-        "product_name": "TOYOTA",
-        "category": "CAR",
-        "image_url": "https://cdn.pixabay.com/photo/2014/02/01/17/28/napple-256261480.jpg",
-        "price": 20000,
-        "stock": 10,
-        "description": ""
-    }
-        //http://localhost:8080/products/buildProduct
- */
+    /*
+        {
+            "product_name": "TOYOTA",
+            "category": "CAR",
+            "image_url": "https://cdn.pixabay.com/photo/2014/02/01/17/28/napple-256261480.jpg",
+            "price": 20000,
+            "stock": 10,
+            "description": ""
+        }
+            //http://localhost:8080/products/buildProduct
+     */
     @PostMapping("/buildProduct/")
-    public ResponseEntity<Product> createProduct(@RequestBody @NonNull ProductRequest rq){
+    public ResponseEntity<Product> createProduct(@RequestBody @NonNull ProductRequest rq) {
         //insert product and return this data
         System.out.println("start buildProduct controller");
         Integer productId = productService.createProduct(rq);
@@ -58,19 +58,19 @@ public class ProductController {
         return ResponseEntity.status(HttpStatus.CREATED).body(product);
     }
 
-/*
-      {
-        "product_name": "TOYOTABB",
-        "category": "CAR",
-        "image_url": "https://cdn.pixabay.com/photo/2014/02/01/17/28/napple-256261480.jpg",
-        "price": 20000,
-        "stock": 10,
-        "description": ""
-    }
-//        http://localhost:8080/products/updateProduct/3
- */
+    /*
+          {
+            "product_name": "TOYOTABB",
+            "category": "CAR",
+            "image_url": "https://cdn.pixabay.com/photo/2014/02/01/17/28/napple-256261480.jpg",
+            "price": 20000,
+            "stock": 10,
+            "description": ""
+        }
+    //        http://localhost:8080/products/updateProduct/3
+     */
     @PutMapping("/updateProduct/{productId}")
-    public ResponseEntity<Product> updateProduct(@PathVariable Integer productId, @RequestBody @NonNull ProductRequest rq){
+    public ResponseEntity<Product> updateProduct(@PathVariable Integer productId, @RequestBody @NonNull ProductRequest rq) {
         //update product and return this data
         log.info("start updateProduct controller");
         productService.updateProduct(productId, rq);
@@ -78,5 +78,13 @@ public class ProductController {
         Product updateProduct = productService.getProductById(productId);
 
         return ResponseEntity.status(HttpStatus.OK).body(updateProduct);
+    }
+
+
+    @DeleteMapping("/deleteProduct/{productId}")
+    public ResponseEntity<?> updateProduct(@PathVariable Integer productId) {
+        productService.deleteProductById(productId);
+
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
