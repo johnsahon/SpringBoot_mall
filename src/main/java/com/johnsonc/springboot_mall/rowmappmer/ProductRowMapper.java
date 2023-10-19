@@ -1,6 +1,7 @@
 package com.johnsonc.springboot_mall.rowmappmer;
 
 
+import com.johnsonc.springboot_mall.constant.ProductCategory;
 import com.johnsonc.springboot_mall.model.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.RowMapper;
@@ -21,19 +22,13 @@ public class ProductRowMapper  implements RowMapper<Product> {
         Product product = new Product();
         product.setProduct_id(resultSet.getInt("product_id"));
         product.setProduct_name(resultSet.getString("product_name"));
-        product.setCategory(resultSet.getString("category"));
+        product.setCategory(ProductCategory.valueOf(resultSet.getString("category")));
         product.setImage_url(resultSet.getString("image_url"));
         product.setPrice(resultSet.getInt("price"));
         product.setStock(resultSet.getInt("stock"));
         product.setDescription(resultSet.getString("description"));
         product.setCreated_date(new Date(resultSet.getTimestamp("created_date").getTime()));
         product.setLast_modified_date(new Date(resultSet.getTimestamp("last_modified_date").getTime()));
-        System.out.println("20 "+ product.toString());
-        log.info("product_id"+resultSet.getInt("product_id"));
-        System.out.println("21 "+ product.getCreated_date().toString());
-//
-//        Timestamp a= resultSet.getTimestamp("created_date");
-//        Date Aa =  new Date(String.valueOf(a));
         return product;
     }
 }
