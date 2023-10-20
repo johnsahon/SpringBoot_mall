@@ -13,6 +13,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @Slf4j
 @RestController
@@ -22,10 +24,18 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
+    @GetMapping("/getProductList")
+    public ResponseEntity<List<Product>> getProductList(@RequestParam(required = false)ProductCategory category
+    , @RequestParam(required = false) String search) {
+        List<Product> productList = productService.getProductList(category, search);
+
+        return ResponseEntity.status(HttpStatus.OK).body(productList);
+    }
+
     //http://localhost:8080/products/search/3
     @GetMapping("/search/{productId}")
     public ResponseEntity<Product> getProduct(@PathVariable Integer productId) {
-
         Product product = productService.getProductById(productId);
 
         if (product != null) {
@@ -47,10 +57,9 @@ public class ProductController {
         }
             //http://localhost:8080/products/buildProduct
      */
-    @PostMapping("/buildProduct/")
+    @PostMapping("/buildProduct")
     public ResponseEntity<Product> createProduct(@RequestBody @NonNull ProductRequest rq) {
         //insert product and return this data
-        System.out.println("start buildProduct controller");
         Integer productId = productService.createProduct(rq);
 
         Product product = productService.getProductById(productId);
