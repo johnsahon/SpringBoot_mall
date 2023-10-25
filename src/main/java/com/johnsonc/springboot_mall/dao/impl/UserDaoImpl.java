@@ -7,6 +7,7 @@ import com.johnsonc.springboot_mall.dao.UserDao;
 import com.johnsonc.springboot_mall.dto.rq.ProductRequest;
 import com.johnsonc.springboot_mall.dto.rq.RegisterRquest;
 import com.johnsonc.springboot_mall.model.Product;
+import com.johnsonc.springboot_mall.model.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -28,8 +29,16 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int createAccount(RegisterRquest rq) {
-        //SQL
+        //SQL insert into user table
         return 0;
     }
+
+    @Override
+    public User getAccountById(RegisterRquest rq){
+        // SQL select user_id from user table
+        return new User();
+    }
+
+
 
 }

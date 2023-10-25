@@ -2,6 +2,7 @@ package com.johnsonc.springboot_mall.service;
 
 import com.johnsonc.springboot_mall.dao.UserDao;
 import com.johnsonc.springboot_mall.dto.rq.RegisterRquest;
+import com.johnsonc.springboot_mall.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,5 +16,11 @@ public class UserServiceImpl implements UserService{
     public int createAccount(RegisterRquest rq) {
         return userDao.createAccount(rq);
     }
+
+    @Override
+    public User getAccountById(RegisterRquest rq) {
+        return userDao.getAccountById(rq);
+    }
+
 
 }

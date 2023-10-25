@@ -1,6 +1,7 @@
 package com.johnsonc.springboot_mall.controller;
 
 import com.johnsonc.springboot_mall.dto.rq.RegisterRquest;
+import com.johnsonc.springboot_mall.model.User;
 import com.johnsonc.springboot_mall.service.UserService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
@@ -22,9 +23,18 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<String> createProduct(@RequestBody @NonNull RegisterRquest rq) {
-        //insert product and return this data
+        //insert account and return this data
         Integer productId = userService.createAccount(rq);
 
         return ResponseEntity.status(HttpStatus.CREATED).body("1");
     }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> intoSystem(@RequestBody @NonNull RegisterRquest rq) {
+        //select account and return this data
+        User productId = userService.getAccountById(rq);
+
+        return ResponseEntity.status(HttpStatus.OK).body("1");
+    }
+
 }
