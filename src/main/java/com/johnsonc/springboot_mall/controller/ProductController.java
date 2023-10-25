@@ -24,7 +24,17 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+// return to jsp or other view
+//    public class MyRequestParams {
+//        private String param1;
+//        private String param2;
+//        // 其他參數的getter和setter方法
+//
+//        // 省略getter和setter方法
+//    }
 
+    // public String handleRequest(@ModelAttribute("myModelAttribute") MyRequestParams params, Model model) {}
+//
     @GetMapping("/getProductList")
     public ResponseEntity<List<Product>> getProductList(@RequestParam(required = false)ProductCategory category
     , @RequestParam(required = false) String search) {
@@ -96,4 +106,7 @@ public class ProductController {
 
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+
+
 }
