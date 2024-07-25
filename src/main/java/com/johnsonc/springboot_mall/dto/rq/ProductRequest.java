@@ -56,6 +56,5 @@ public class ProductRequest {
         this.description = description;
     }
 
-
-
+    
 }

@@ -27,6 +27,7 @@ public class GoodsController {
     private  final  GoodsJPARepository goodsJPARepository;
     @PostMapping(value = "queryGoods")
     public ResponseEntity<List<GoodsRs>> queryGoods(){
+        //demo用， 之後可拿去service
         var name = "John";
         var nameListByJohn = goodsJPARepository.findALlByName(name);
 

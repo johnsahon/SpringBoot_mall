@@ -12,7 +12,6 @@ public interface UserDao {
 
     public int createAccount(RegisterRquest rq);
 
-
     public User getAccountById(RegisterRquest rq);
 
 }
