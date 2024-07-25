@@ -4,7 +4,7 @@ package com.johnsonc.springboot_mall.controller;
 import com.johnsonc.springboot_mall.constant.ProductCategory;
 import com.johnsonc.springboot_mall.dto.rq.ProductRequest;
 import com.johnsonc.springboot_mall.model.Product;
-import com.johnsonc.springboot_mall.service.ProductService;
+import com.johnsonc.springboot_mall.service.abstraction.ProductService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -94,7 +94,7 @@ public class ProductController {
         log.info("start updateProduct controller");
         productService.updateProduct(productId, rq);
 
-        Product updateProduct = productService.getProductById(productId);
+        var updateProduct = productService.getProductById(productId);
 
         return ResponseEntity.status(HttpStatus.OK).body(updateProduct);
     }

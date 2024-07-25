@@ -1,4 +1,4 @@
-package com.johnsonc.springboot_mall.service;
+package com.johnsonc.springboot_mall.service.abstraction;
 
 import com.johnsonc.springboot_mall.constant.ProductCategory;
 import com.johnsonc.springboot_mall.dto.rq.ProductRequest;

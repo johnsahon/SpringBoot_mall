@@ -2,7 +2,7 @@ package com.johnsonc.springboot_mall.controller;
 
 import com.johnsonc.springboot_mall.dto.rq.RegisterRquest;
 import com.johnsonc.springboot_mall.model.User;
-import com.johnsonc.springboot_mall.service.UserService;
+import com.johnsonc.springboot_mall.service.abstraction.UserService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

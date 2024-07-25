@@ -12,6 +12,7 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Component
 public class ProductRequest {
 
     @NonNull
