@@ -17,5 +17,4 @@ public interface ProductDao {
 
     public void deleteProductById(Integer productId);
 
-
 }

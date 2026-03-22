@@ -1,11 +1,13 @@
 package com.johnsonc.springboot_mall.dto.rs;
 
-import org.springframework.stereotype.Component;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Component
+@Data
+@NoArgsConstructor
 public class GoodsRs {
-
-    String msg;
-
-    String msgContent;
+    private Long id;
+    private String name;
+    private double price;
+    private int quantity;
 }
